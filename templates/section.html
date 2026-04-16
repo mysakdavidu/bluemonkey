@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <section class="simple-page">
-    <div class="section-body space-y-8">
+  <section class="py-[clamp(1.5rem,3vw,2.5rem)] text-white">
+    <div class="mx-auto max-w-4xl space-y-8">
       <header class="space-y-2">
-        <h1 class="section-title text-[clamp(1.5rem,4vw,2.75rem)]">{{ section.title }}</h1>
+        <h1 class="mb-3 font-display text-[clamp(1.5rem,4vw,2.75rem)] leading-[1.05] uppercase tracking-[0.84px] text-white">{{ section.title }}</h1>
       </header>
 
       {% if section.pages %}
         <ul class="space-y-3">
           {% for page in section.pages %}
-            <li class="list-copy">
+            <li class="font-barlow leading-[1.58] text-white">
               <a class="underline decoration-white/40 underline-offset-4 transition hover:text-brand-yellow hover:decoration-brand-yellow" href="{{ page.permalink }}">{{ page.title }}</a>
               {% if page.date %} – {{ page.date }}{% endif %}
             </li>

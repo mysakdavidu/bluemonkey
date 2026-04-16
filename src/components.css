@@ -1,20 +1,4 @@
 @layer components {
-  .site-header {
-    @apply sticky top-0 z-50 border-b border-white/20 bg-[linear-gradient(90deg,#1d2347_0%,#2b2968_38%,#35319a_100%)] shadow-[0_1px_0_rgba(120,142,240,0.18)];
-  }
-
-  .nav-link {
-    @apply font-barlow text-sm font-semibold tracking-[0.01em] text-brand-paper no-underline transition hover:text-brand-yellow md:text-base;
-  }
-
-  .brand-link {
-    @apply inline-flex min-w-0 items-center gap-2 text-brand-blue no-underline transition hover:text-brand-yellow;
-  }
-
-  .brand-mark {
-    @apply inline-flex flex-col font-display text-[clamp(0.92rem,1.45vw,1.5rem)] leading-none uppercase tracking-[0.72px] text-brand-blue;
-  }
-
   .hero-band-grid {
     @apply grid h-[min(58vh,820px)] w-full;
   }
@@ -31,79 +15,6 @@
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
-  .hero-copy {
-    @apply relative z-10 -mt-[clamp(110px,16vw,170px)] mb-6 w-fit max-w-[calc(100%-clamp(64px,10vw,120px))] text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.35)];
-  }
-
-  .hero-topline {
-    @apply m-0 -translate-y-1 font-display text-[clamp(0.54rem,1.1vw,1.12rem)] leading-[1.08] font-normal uppercase tracking-[0.62px] text-white;
-  }
-
-  .hero-headline {
-    @apply mt-2 mb-0 font-display text-[clamp(1rem,4.4vw,3.25rem)] leading-[0.92] font-normal uppercase tracking-[0.78px] text-white;
-  }
-
-  .hero-subheadline {
-    @apply mt-1 mb-0 font-display text-[clamp(0.94rem,3.9vw,2.85rem)] leading-[0.92] font-normal uppercase tracking-[0.72px] text-brand-blue;
-  }
-
-  .hero-contacts {
-    @apply mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 font-barlow text-[clamp(0.68rem,1.05vw,1.02rem)] font-semibold tracking-[0.03em] text-white antialiased;
-  }
-
-  .hero-contact-link {
-    @apply inline-flex items-center gap-1.5 text-white no-underline transition hover:text-brand-yellow hover:underline;
-  }
-
-  .hero-contact-link + .hero-contact-link::before {
-    content: "·";
-    @apply mr-1 text-white/65;
-  }
-
-  .hero-contact-icon {
-    @apply h-[1.05em] w-[1.05em] shrink-0;
-  }
-
-  .hero-contact-icon svg {
-    @apply block h-full w-full;
-  }
-
-  .content-panel {
-    @apply section-shell text-white;
-  }
-
-  .content-grid {
-    @apply grid items-start gap-4 md:gap-6 lg:grid-cols-2 lg:gap-8;
-  }
-
-  .content-grid.media-left .content-copy-wrap {
-    @apply lg:order-2;
-  }
-
-  .content-grid.media-left .content-media {
-    @apply lg:order-1;
-  }
-
-  .content-media {
-    @apply m-0;
-  }
-
-  .content-media img {
-    @apply block w-full rounded-xl object-cover;
-  }
-
-  .video-trigger {
-    @apply relative block w-full cursor-pointer overflow-hidden rounded-xl border-0 bg-transparent p-0 text-left;
-  }
-
-  .video-trigger img {
-    @apply block w-full rounded-xl;
-  }
-
-  .video-play {
-    @apply absolute left-1/2 top-1/2 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-black/70 text-[1.4rem] leading-none text-white shadow-[0_2px_10px_rgba(0,0,0,0.35)];
-  }
-
   .content-video-embed {
     @apply relative aspect-video w-full overflow-hidden rounded-xl;
   }
@@ -113,7 +24,7 @@
   }
 
   .rich-text {
-    @apply content-copy;
+    @apply max-w-[84ch] font-barlow text-[clamp(1rem,1.1vw,1.08rem)] leading-[1.58] text-white;
   }
 
   .rich-text p {
@@ -128,22 +39,5 @@
 
   .rich-text a {
     @apply text-white underline decoration-white/40 underline-offset-4 transition hover:text-brand-yellow hover:decoration-brand-yellow;
-  }
-
-  .list-copy {
-    @apply font-barlow leading-[1.58] text-white;
-  }
-
-  .simple-page {
-    @apply section-shell text-white;
-  }
-
-  .simple-page article,
-  .simple-page .section-body {
-    @apply mx-auto max-w-4xl;
-  }
-
-  .back-link {
-    @apply inline-flex items-center gap-2 font-barlow font-semibold text-brand-blue no-underline transition hover:text-brand-yellow hover:underline;
   }
 }

@@ -14,9 +14,14 @@ web_label = "www.facebook.com/band.blue.monkey"
 fallback_image = "/ales-jana-michal.png"
 fallback_alt = "Kapela Blue Monkey"
 
+
 [[extra.hero.members]]
 src = "/img/hero-members/ales.png"
 alt = "Aleš - Blue Monkey"
+
+[[extra.hero.members]]
+src = "/img/hero-members/martin_bw_cropped.jpeg"
+alt = "Martin - Blue Monkey"
 
 [[extra.hero.members]]
 src = "/img/hero-members/jana.png"
@@ -26,9 +31,6 @@ alt = "Jana - Blue Monkey"
 src = "/img/hero-members/michal.png"
 alt = "Michal - Blue Monkey"
 
-[[extra.hero.members]]
-src = "/img/hero-members/martin.jpg"
-alt = "Martin - Blue Monkey"
 
 
 # [[extra.hero.members]]

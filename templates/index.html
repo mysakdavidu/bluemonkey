@@ -34,26 +34,27 @@
     <div class="pointer-events-none absolute inset-0 z-[4] bg-[linear-gradient(180deg,rgba(47,42,132,0)_0%,rgba(47,42,132,0)_50%,rgba(47,42,132,0.12)_58%,rgba(47,42,132,0.38)_72%,rgba(43,61,159,0.72)_86%,rgba(46,42,128,0.9)_96%,#2e2a80_100%)]"></div>
   </section>
 
-  <section id="hero-texts" class="section-shell bg-transparent text-white">
-    <div class="hero-copy">
-      <p class="hero-topline">{{ section.extra.hero.topline | default(value="Zábavy, plesy, svatby, narozeniny, večírky, párty") }}</p>
-      <h1 class="hero-headline">{{ section.extra.hero.headline | default(value="Hudební skupina") }}</h1>
-      <p class="hero-subheadline">{{ section.extra.hero.band | default(value="Blue Monkey") }}</p>
-      <p class="hero-contacts">
-        <a class="hero-contact-link" href="tel:{{ section.extra.hero.phone_href | default(value="+420724666675") }}">
-          <span class="hero-contact-icon" aria-hidden="true">
+
+  <section id="hero-texts" class="bg-transparent py-[clamp(1.5rem,3vw,2.5rem)] text-white">
+    <div class="relative z-10 -mt-[clamp(110px,16vw,170px)] mb-6 w-fit max-w-[calc(100%-clamp(64px,10vw,120px))] text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.35)]">
+      <p class="m-0 -translate-y-1 font-display text-[clamp(0.54rem,1.1vw,1.12rem)] leading-[1.08] font-normal uppercase tracking-[0.62px] text-white">{{ section.extra.hero.topline | default(value="Zábavy, plesy, svatby, narozeniny, večírky, párty") }}</p>
+      <h1 class="mt-2 mb-0 font-display text-[clamp(1rem,4.4vw,3.25rem)] leading-[0.92] font-normal uppercase tracking-[0.78px] text-white">{{ section.extra.hero.headline | default(value="Hudební skupina") }}</h1>
+      <p class="mt-1 mb-0 font-display text-[clamp(0.94rem,3.9vw,2.85rem)] leading-[0.92] font-normal uppercase tracking-[0.72px] text-brand-blue">{{ section.extra.hero.band | default(value="Blue Monkey") }}</p>
+      <p class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 font-barlow text-[clamp(0.68rem,1.05vw,1.02rem)] font-semibold tracking-[0.03em] text-white antialiased">
+        <a class="inline-flex items-center gap-1.5 text-white no-underline transition hover:text-brand-yellow hover:underline" href="tel:{{ section.extra.hero.phone_href | default(value="+420724666675") }}">
+          <span class="h-[1.05em] w-[1.05em] shrink-0" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           </span>
           {{ section.extra.hero.phone_label | default(value="724 666 675") }}
         </a>
-        <a class="hero-contact-link" href="mailto:{{ section.extra.hero.email | default(value="info@bluemonkey.cz") }}">
-          <span class="hero-contact-icon" aria-hidden="true">
+        <a class="inline-flex items-center gap-1.5 text-white no-underline transition before:mr-1 before:text-white/65 before:content-['·'] hover:text-brand-yellow hover:underline" href="mailto:{{ section.extra.hero.email | default(value="info@bluemonkey.cz") }}">
+          <span class="h-[1.05em] w-[1.05em] shrink-0" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </span>
           {{ section.extra.hero.email | default(value="info@bluemonkey.cz") }}
         </a>
-        <a class="hero-contact-link" href="{{ section.extra.hero.web_href | default(value=config.base_url) }}">
-          <span class="hero-contact-icon" aria-hidden="true">
+        <a class="inline-flex items-center gap-1.5 text-white no-underline transition before:mr-1 before:text-white/65 before:content-['·'] hover:text-brand-yellow hover:underline" href="{{ section.extra.hero.web_href | default(value=config.base_url) }}">
+          <span class="h-[1.05em] w-[1.05em] shrink-0" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           </span>
           {{ section.extra.hero.web_label | default(value="www.bluemonkey.cz") }}
@@ -63,73 +64,73 @@
     </div>
   </section>
 
-  <section id="kapela" class="content-panel">
+  <section id="kapela" class="py-[clamp(1.5rem,3vw,2.5rem)] text-white">
     {% set about_image = about.extra.image | default(value="") %}
     {% set about_image_alt = about.extra.image_alt | default(value=about.title) %}
     {% set about_image_align = about.extra.image_align | default(value="right") %}
     {% set about_youtube_id = about.extra.youtube_id | default(value="") %}
-    <div class="content-grid {% if about_image_align == "left" %}media-left{% else %}media-right{% endif %}">
-      <div class="content-copy-wrap">
-        <h2 class="section-title">{{ about.title }}</h2>
+    <div class="grid items-start gap-4 md:gap-6 lg:grid-cols-2 lg:gap-8">
+      <div class="{% if about_image_align == "left" %}lg:order-2{% endif %}">
+        <h2 class="mb-3 font-display text-[clamp(1.25rem,3vw,2rem)] leading-[1.05] uppercase tracking-[0.84px] text-white">{{ about.title }}</h2>
         <div class="rich-text">
           {{ about.content | safe }}
         </div>
       </div>
       {% if about_youtube_id %}
-        <figure class="content-media">
+        <figure class="m-0 {% if about_image_align == "left" %}lg:order-1{% endif %}">
           <button
-            class="video-trigger"
+            class="relative block w-full cursor-pointer overflow-hidden rounded-xl border-0 bg-transparent p-0 text-left"
             type="button"
             data-youtube-id="{{ about_youtube_id }}"
             aria-label="Přehrát video {{ about.title }}"
           >
-            <img src="https://i.ytimg.com/vi/{{ about_youtube_id }}/hqdefault.jpg" alt="{{ about_image_alt }}" loading="lazy" decoding="async">
-            <span class="video-play" aria-hidden="true">▶</span>
+            <img class="block w-full rounded-xl" src="https://i.ytimg.com/vi/{{ about_youtube_id }}/hqdefault.jpg" alt="{{ about_image_alt }}" loading="lazy" decoding="async">
+            <span class="absolute left-1/2 top-1/2 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-black/70 text-[1.4rem] leading-none text-white shadow-[0_2px_10px_rgba(0,0,0,0.35)]" aria-hidden="true">▶</span>
           </button>
         </figure>
       {% elif about_image %}
-        <figure class="content-media">
-          <img src="{{ about_image }}" alt="{{ about_image_alt }}" loading="lazy" decoding="async">
+        <figure class="m-0 {% if about_image_align == "left" %}lg:order-1{% endif %}">
+          <img class="block w-full rounded-xl object-cover" src="{{ about_image }}" alt="{{ about_image_alt }}" loading="lazy" decoding="async">
         </figure>
       {% endif %}
     </div>
   </section>
 
-  <section id="koncerty" class="content-panel pt-4">
-    <h2 class="section-title">{{ concerts.title }}</h2>
+  <section id="koncerty" class="pt-4 pb-[clamp(1.5rem,3vw,2.5rem)] text-white">
+    <h2 class="mb-3 font-display text-[clamp(1.25rem,3vw,2rem)] leading-[1.05] uppercase tracking-[0.84px] text-white">{{ concerts.title }}</h2>
     {% if concerts.pages | length > 0 %}
       <ul class="list-disc pl-5 text-white">
         {% for page in concerts.pages %}
-          <li class="list-copy {% if not loop.last %}mb-2.5{% endif %}">
+          <li class="font-barlow leading-[1.58] text-white {% if not loop.last %}mb-2.5{% endif %}">
             <strong>{{ page.date }}</strong> - {{ page.title }}
             {% if page.content %}<div>{{ page.content | safe }}</div>{% endif %}
           </li>
         {% endfor %}
       </ul>
     {% else %}
-      <p class="list-copy">Termíny koncertů brzy doplníme.</p>
+      <p class="font-barlow leading-[1.58] text-white">Termíny koncertů brzy doplníme.</p>
     {% endif %}
   </section>
 
-  <section id="playlist" class="content-panel pt-4">
-    <h2 class="section-title">{{ playlist.title }}</h2>
+  <section id="playlist" class="pt-4 pb-[clamp(1.5rem,3vw,2.5rem)] text-white">
+    <h2 class="mb-3 font-display text-[clamp(1.25rem,3vw,2rem)] leading-[1.05] uppercase tracking-[0.84px] text-white">{{ playlist.title }}</h2>
     {% if playlist.content %}
-      <div class="rich-text">
+      <div class="[&_p]:max-w-[84ch] [&_p]:font-barlow [&_p]:text-[clamp(1rem,1.1vw,1.08rem)] [&_p]:leading-[1.58] [&_p]:text-white [&_p]:my-0 [&_p+p]:mt-4 [&_ul]:w-full [&_ul]:columns-2 [&_ul]:gap-8 [&_ul]:pl-5 md:[&_ul]:columns-3 lg:[&_ul]:columns-4 2xl:[&_ul]:columns-5 [&_li]:break-inside-avoid [&_li]:mb-2 [&_li]:border-b [&_li]:border-white/10 [&_li]:pb-2 [&_li]:font-barlow [&_li]:leading-[1.58] [&_li]:text-white [&_li_strong]:font-semibold">
         {{ playlist.content | safe }}
       </div>
     {% else %}
-      <p class="list-copy">Playlist brzy doplníme.</p>
+      <p class="font-barlow leading-[1.58] text-white">Playlist brzy doplníme.</p>
     {% endif %}
   </section>
 
-  <section id="kontakt" class="content-panel pt-4">
+  <section id="kontakt" class="pt-4 pb-[clamp(1.5rem,3vw,2.5rem)] text-white">
     {% set contact_image = contact.extra.image | default(value="") %}
     {% set contact_image_alt = contact.extra.image_alt | default(value=contact.title) %}
     {% set contact_image_align = contact.extra.image_align | default(value="right") %}
     {% set contact_youtube_id = contact.extra.youtube_id | default(value="") %}
-    <div class="content-grid {% if contact_image_align == "left" %}media-left{% else %}media-right{% endif %}">
-      <div class="content-copy-wrap">
-        <h2 class="section-title">{{ contact.title }}</h2>
+    <div class="grid items-start gap-4 md:gap-6 lg:grid-cols-2 lg:gap-8">
+      <div class="{% if contact_image_align == "left" %}lg:order-2{% endif %}">
+        <h2 class="mb-3 font-display text-[clamp(1.25rem,3vw,2rem)] leading-[1.05] uppercase tracking-[0.84px] text-white">{{ contact.title }}</h2>
         {% if contact.content %}
           <div class="rich-text">
             {{ contact.content | safe }}
@@ -157,20 +158,20 @@
         </div>
       </div>
       {% if contact_youtube_id %}
-        <figure class="content-media">
+        <figure class="m-0 {% if contact_image_align == "left" %}lg:order-1{% endif %}">
           <button
-            class="video-trigger"
+            class="relative block w-full cursor-pointer overflow-hidden rounded-xl border-0 bg-transparent p-0 text-left"
             type="button"
             data-youtube-id="{{ contact_youtube_id }}"
             aria-label="Přehrát video {{ contact.title }}"
           >
-            <img src="https://i.ytimg.com/vi/{{ contact_youtube_id }}/hqdefault.jpg" alt="{{ contact_image_alt }}" loading="lazy" decoding="async">
-            <span class="video-play" aria-hidden="true">▶</span>
+            <img class="block w-full rounded-xl" src="https://i.ytimg.com/vi/{{ contact_youtube_id }}/hqdefault.jpg" alt="{{ contact_image_alt }}" loading="lazy" decoding="async">
+            <span class="absolute left-1/2 top-1/2 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-black/70 text-[1.4rem] leading-none text-white shadow-[0_2px_10px_rgba(0,0,0,0.35)]" aria-hidden="true">▶</span>
           </button>
         </figure>
       {% elif contact_image %}
-        <figure class="content-media">
-          <img src="{{ contact_image }}" alt="{{ contact_image_alt }}" loading="lazy" decoding="async">
+        <figure class="m-0 {% if contact_image_align == "left" %}lg:order-1{% endif %}">
+          <img class="block w-full rounded-xl object-cover" src="{{ contact_image }}" alt="{{ contact_image_alt }}" loading="lazy" decoding="async">
         </figure>
       {% endif %}
     </div>
