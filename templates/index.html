@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% set concerts = get_section(path="koncerty/_index.md") %}
+  {% set playlist = get_section(path="playlist/_index.md") %}
+  {% set about = get_section(path="kapela/_index.md") %}
+  {% set contact = get_section(path="kontakt/_index.md") %}
+
+  <section class="hero-composition">
+    <div class="hero-backdrop">
+      {% if section.extra.hero.members and section.extra.hero.members | length > 0 %}
+        <div class="hero-members hero-members-{{ section.extra.hero.members | length }}">
+          {% for member in section.extra.hero.members %}
+            <figure class="hero-member-card">
+              <img
+                class="hero-member-image"
+                src="{{ member.src }}"
+                alt="{{ member.alt | default(value='Člen kapely Blue Monkey') }}"
+                loading="eager"
+                decoding="async"
+                {% if member.position %}style="object-position: {{ member.position }};"{% endif %}
+              >
+            </figure>
+          {% endfor %}
+        </div>
+      {% else %}
+        <img
+          class="landing-image"
+          src="{{ section.extra.hero.fallback_image | default(value='/ales-jana-michal.png') }}"
+          alt="{{ section.extra.hero.fallback_alt | default(value='Kapela Blue Monkey') }}"
+        >
+      {% endif %}
+    </div>
+    <div class="landing-poster landing-poster-overlay">
+    </div>
+  </section>
+
+  <section id="hero-texts" class="hero-texts intro">
+    <div class="hero-copy-block">
+      <p class="poster-topline">{{ section.extra.hero.topline | default(value="Zábavy, plesy, svatby, narozeniny, večírky, párty") }}</p>
+      <h1 class="poster-headline">{{ section.extra.hero.headline | default(value="Hudební skupina") }}</h1>
+      <p class="poster-band">{{ section.extra.hero.band | default(value="Blue Monkey") }}</p>
+      <p class="poster-contact">
+        <a class="poster-contact-link" href="tel:{{ section.extra.hero.phone_href | default(value="+420724666675") }}">
+          <span class="poster-contact-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          {{ section.extra.hero.phone_label | default(value="724 666 675") }}
+        </a>
+        <span class="poster-contact-sep" aria-hidden="true">·</span>
+        <a class="poster-contact-link" href="mailto:{{ section.extra.hero.email | default(value="info@bluemonkey.cz") }}">
+          <span class="poster-contact-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </span>
+          {{ section.extra.hero.email | default(value="info@bluemonkey.cz") }}
+        </a>
+        <span class="poster-contact-sep" aria-hidden="true">·</span>
+        <a class="poster-contact-link" href="{{ section.extra.hero.web_href | default(value=config.base_url) }}">
+          <span class="poster-contact-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </span>
+          {{ section.extra.hero.web_label | default(value="www.bluemonkey.cz") }}
+        </a>
+      </p>
+      <img class="poster-badge-img" src="/img/badge.png" alt="Rock a pop, 100 % živě" width="132" height="132" decoding="async">
+    </div>
+  </section>
+
+  <section id="kapela" class="intro">
+    {% set about_image = about.extra.image | default(value="") %}
+    {% set about_image_alt = about.extra.image_alt | default(value=about.title) %}
+    {% set about_image_align = about.extra.image_align | default(value="right") %}
+    {% set about_youtube_id = about.extra.youtube_id | default(value="") %}
+    <div class="content-with-media {% if about_image_align == "left" %}media-left{% else %}media-right{% endif %}">
+      <div class="content-body">
+        <h2 class="display-title">{{ about.title }}</h2>
+        <div class="intro-content">
+          {{ about.content | safe }}
+        </div>
+      </div>
+      {% if about_youtube_id %}
+        <figure class="content-media">
+          <button
+            class="content-video-trigger"
+            type="button"
+            data-youtube-id="{{ about_youtube_id }}"
+            aria-label="Přehrát video {{ about.title }}"
+          >
+            <img src="https://i.ytimg.com/vi/{{ about_youtube_id }}/hqdefault.jpg" alt="{{ about_image_alt }}" loading="lazy" decoding="async">
+            <span class="content-video-play" aria-hidden="true">▶</span>
+          </button>
+        </figure>
+      {% elif about_image %}
+        <figure class="content-media">
+          <img src="{{ about_image }}" alt="{{ about_image_alt }}" loading="lazy" decoding="async">
+        </figure>
+      {% endif %}
+    </div>
+  </section>
+
+  <section id="koncerty" class="intro singlepage-section">
+    <h2 class="display-title">{{ concerts.title }}</h2>
+    {% if concerts.pages | length > 0 %}
+      <ul class="concert-list">
+        {% for page in concerts.pages %}
+          <li class="concert-list-item">
+            <strong>{{ page.date }}</strong> - {{ page.title }}
+            {% if page.content %}<div>{{ page.content | safe }}</div>{% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Termíny koncertů brzy doplníme.</p>
+    {% endif %}
+  </section>
+
+  <section id="playlist" class="intro singlepage-section">
+    <h2 class="display-title">{{ playlist.title }}</h2>
+    {% if playlist.content %}
+      <div class="intro-content">
+        {{ playlist.content | safe }}
+      </div>
+    {% else %}
+      <p>Playlist brzy doplníme.</p>
+    {% endif %}
+  </section>
+
+  <section id="kontakt" class="intro singlepage-section">
+    {% set contact_image = contact.extra.image | default(value="") %}
+    {% set contact_image_alt = contact.extra.image_alt | default(value=contact.title) %}
+    {% set contact_image_align = contact.extra.image_align | default(value="right") %}
+    {% set contact_youtube_id = contact.extra.youtube_id | default(value="") %}
+    <div class="content-with-media {% if contact_image_align == "left" %}media-left{% else %}media-right{% endif %}">
+      <div class="content-body">
+        <h2 class="display-title">{{ contact.title }}</h2>
+        {% if contact.content %}
+          <div class="intro-content">
+            {{ contact.content | safe }}
+          </div>
+        {% endif %}
+        <p>
+          Telefon:
+          <a href="tel:{{ contact.extra.phone_href | default(value=section.extra.hero.phone_href | default(value='+420724666675')) }}">
+            {{ contact.extra.phone_label | default(value=section.extra.hero.phone_label | default(value='724 666 675')) }}
+          </a>
+        </p>
+        <p>
+          E-mail:
+          <a href="mailto:{{ contact.extra.email | default(value=section.extra.hero.email | default(value='info@bluemonkey.cz')) }}">
+            {{ contact.extra.email | default(value=section.extra.hero.email | default(value='info@bluemonkey.cz')) }}
+          </a>
+        </p>
+        <p>
+          Web:
+          <a href="{{ contact.extra.web_href | default(value=section.extra.hero.web_href | default(value=config.base_url)) }}">
+            {{ contact.extra.web_label | default(value=section.extra.hero.web_label | default(value='www.bluemonkey.cz')) }}
+          </a>
+        </p>
+      </div>
+      {% if contact_youtube_id %}
+        <figure class="content-media">
+          <button
+            class="content-video-trigger"
+            type="button"
+            data-youtube-id="{{ contact_youtube_id }}"
+            aria-label="Přehrát video {{ contact.title }}"
+          >
+            <img src="https://i.ytimg.com/vi/{{ contact_youtube_id }}/hqdefault.jpg" alt="{{ contact_image_alt }}" loading="lazy" decoding="async">
+            <span class="content-video-play" aria-hidden="true">▶</span>
+          </button>
+        </figure>
+      {% elif contact_image %}
+        <figure class="content-media">
+          <img src="{{ contact_image }}" alt="{{ contact_image_alt }}" loading="lazy" decoding="async">
+        </figure>
+      {% endif %}
+    </div>
+  </section>
+{% endblock content %}

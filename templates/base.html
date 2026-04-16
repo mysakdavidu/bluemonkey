@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script defer src="/js/alpine.min.js"></script>
+</head>
+<body>
+  <header>
+    <a class="brand" href="/">
+      <img class="brand-logo-mobile" src="/img/logo.png" alt="" width="56" height="36" decoding="async">
+      <span class="brand-text"><span>Blue</span><span>Monkey</span></span>
+    </a>
+    <nav>
+      <a href="/#koncerty">Koncerty</a>
+      <a href="/#playlist">Playlist</a>
+      <a href="/#kapela">Kapela</a>
+      <a href="/#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}{% endblock content %}
+  </main>
+  <script>
+    document.addEventListener("click", function (event) {
+      const trigger = event.target.closest(".content-video-trigger");
+      if (!trigger) {
+        return;
+      }
+
+      const videoId = trigger.getAttribute("data-youtube-id");
+      if (!videoId) {
+        return;
+      }
+
+      const iframe = document.createElement("iframe");
+      iframe.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(videoId) + "?autoplay=1&rel=0";
+      iframe.title = "YouTube video player";
+      iframe.loading = "lazy";
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.allowFullscreen = true;
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "content-video-embed";
+      wrapper.appendChild(iframe);
+
+      trigger.replaceWith(wrapper);
+    });
+  </script>
+</body>
+</html>
