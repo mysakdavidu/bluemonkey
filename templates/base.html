@@ -5,29 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ config.title }}{% endblock title %}</title>
   <link rel="stylesheet" href="/css/tailwind-style.css">
-  <link rel="stylesheet" href="/css/style.css">
   <script defer src="/js/alpine.min.js"></script>
 </head>
-<body>
-  <header>
-    <a class="brand" href="/">
-      <img class="brand-logo-mobile" src="/img/logo.png" alt="" width="56" height="36" decoding="async">
-      <span class="brand-text"><span>Blue</span><span>Monkey</span></span>
-    </a>
-    <nav>
-      <a href="/#koncerty">Koncerty</a>
-      <a href="/#playlist">Playlist</a>
-      <a href="/#kapela">Kapela</a>
-      <a href="/#kontakt">Kontakt</a>
-    </nav>
+<body class="min-h-screen bg-brand-indigo text-brand-ink">
+  <header class="site-header">
+    <div class="page-shell flex items-center justify-between gap-4 py-3">
+      <a class="brand-link" href="/">
+        <img class="block h-auto w-[clamp(38px,4vw,56px)] shrink-0 object-contain" src="/img/logo.png" alt="" width="56" height="36" decoding="async">
+        <span class="brand-mark"><span>Blue</span><span>Monkey</span></span>
+      </a>
+      <nav class="flex flex-nowrap items-center gap-3 md:gap-4">
+        <a class="nav-link" href="/#koncerty">Koncerty</a>
+        <a class="nav-link" href="/#playlist">Playlist</a>
+        <a class="nav-link" href="/#kapela">Kapela</a>
+        <a class="nav-link" href="/#kontakt">Kontakt</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
+  <main class="page-shell pb-6 md:pb-8">
     {% block content %}{% endblock content %}
   </main>
+
   <script>
     document.addEventListener("click", function (event) {
-      const trigger = event.target.closest(".content-video-trigger");
+      const trigger = event.target.closest("[data-youtube-id]");
       if (!trigger) {
         return;
       }

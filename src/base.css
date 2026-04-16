@@ -1,0 +1,38 @@
+@layer base {
+  html {
+    overflow-x: clip;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-brand-indigo);
+    color: var(--color-brand-ink);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 860px) {
+    .page-shell {
+      width: 100%;
+      padding-inline: clamp(12px, 2.4vw, 18px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .page-shell {
+      padding-inline: var(--spacing-shell-mobile);
+    }
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin-top: 0;
+  }
+
+  a {
+    color: inherit;
+    transition: color 150ms ease;
+  }
+}

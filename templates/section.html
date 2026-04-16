@@ -1,19 +1,29 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>{{ section.title }}</h1>
+  <section class="simple-page">
+    <div class="section-body space-y-8">
+      <header class="space-y-2">
+        <h1 class="section-title text-[clamp(1.5rem,4vw,2.75rem)]">{{ section.title }}</h1>
+      </header>
 
-  <ul>
-    {% for page in section.pages %}
-      <li>
-        <a href="{{ page.permalink }}">{{ page.title }}</a>
-        {% if page.date %} – {{ page.date }}{% endif %}
-      </li>
-    {% endfor %}
-  </ul>
+      {% if section.pages %}
+        <ul class="space-y-3">
+          {% for page in section.pages %}
+            <li class="list-copy">
+              <a class="underline decoration-white/40 underline-offset-4 transition hover:text-brand-yellow hover:decoration-brand-yellow" href="{{ page.permalink }}">{{ page.title }}</a>
+              {% if page.date %} – {{ page.date }}{% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
 
-  <div>
-    {{ section.content | safe }}
-  </div>
+      {% if section.content %}
+        <div class="rich-text">
+          {{ section.content | safe }}
+        </div>
+      {% endif %}
+    </div>
+  </section>
 {% endblock content %}
 

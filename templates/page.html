@@ -3,20 +3,24 @@
 {% block title %}{{ page.title }} | {{ config.title }}{% endblock title %}
 
 {% block content %}
-  <article>
-    <h1>{{ page.title }}</h1>
+  <section class="simple-page">
+    <article class="space-y-6">
+      <header class="space-y-2">
+        <h1 class="section-title text-[clamp(1.5rem,4vw,2.75rem)]">{{ page.title }}</h1>
 
-    {% if page.date %}
-      <p>{{ page.date }}</p>
-    {% endif %}
+        {% if page.date %}
+          <p class="font-barlow text-sm uppercase tracking-[0.12em] text-brand-blue">{{ page.date }}</p>
+        {% endif %}
+      </header>
 
-    <div>
-      {{ page.content | safe }}
-    </div>
+      <div class="rich-text">
+        {{ page.content | safe }}
+      </div>
 
-    {% if page.section %}
-      {% set parent_section = get_section(path=page.section) %}
-      <p><a href="{{ parent_section.permalink }}">Zpět na koncerty</a></p>
-    {% endif %}
-  </article>
+      {% if page.section %}
+        {% set parent_section = get_section(path=page.section) %}
+        <p><a class="back-link" href="{{ parent_section.permalink }}">Zpět na koncerty</a></p>
+      {% endif %}
+    </article>
+  </section>
 {% endblock content %}
