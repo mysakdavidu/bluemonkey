@@ -9,17 +9,22 @@
 </head>
 <body class="min-h-screen bg-brand-indigo text-brand-ink">
   <header class="sticky top-0 z-50 border-b border-white/20 bg-[linear-gradient(90deg,#1d2347_0%,#2b2968_38%,#35319a_100%)] shadow-[0_1px_0_rgba(120,142,240,0.18)]">
-    <div class="page-shell flex items-center justify-between gap-4 py-3">
-      <a class="inline-flex min-w-0 items-center gap-2 text-brand-blue no-underline transition hover:text-brand-yellow" href="/">
-        <img class="block h-auto w-[clamp(38px,4vw,56px)] shrink-0 object-contain" src="/img/logo.png" alt="" width="56" height="36" decoding="async">
-        <span class="inline-flex flex-col font-display text-[clamp(0.92rem,1.45vw,1.5rem)] leading-none uppercase tracking-[0.72px] text-brand-blue"><span>Blue</span><span>Monkey</span></span>
+    <div class="page-shell flex items-start gap-3 py-3 md:flex-row md:items-center md:justify-between">
+      <a class="shrink-0 text-brand-blue no-underline transition hover:text-brand-yellow" href="/">
+        <img class="block h-auto w-[clamp(52px,12vw,72px)] object-contain md:w-[clamp(38px,4vw,56px)]" src="/img/logo.png" alt="" width="56" height="36" decoding="async">
       </a>
-      <nav class="flex flex-nowrap items-center gap-3 md:gap-4">
-        <a class="font-barlow text-sm font-semibold tracking-[0.01em] text-brand-paper no-underline transition hover:text-brand-yellow md:text-base" href="/#koncerty">Koncerty</a>
-        <a class="font-barlow text-sm font-semibold tracking-[0.01em] text-brand-paper no-underline transition hover:text-brand-yellow md:text-base" href="/#playlist">Playlist</a>
-        <a class="font-barlow text-sm font-semibold tracking-[0.01em] text-brand-paper no-underline transition hover:text-brand-yellow md:text-base" href="/#kapela">Kapela</a>
-        <a class="font-barlow text-sm font-semibold tracking-[0.01em] text-brand-paper no-underline transition hover:text-brand-yellow md:text-base" href="/#kontakt">Kontakt</a>
-      </nav>
+      <div class="flex min-w-0 flex-1 flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-4">
+        <a class="inline-flex min-w-0 items-center gap-2 text-brand-blue no-underline transition hover:text-brand-yellow" href="/">
+          <span class="inline-flex flex-col font-display text-[clamp(0.92rem,1.45vw,1.5rem)] leading-none uppercase tracking-[0.72px] text-brand-blue"><span>Blue</span><span>Monkey</span></span>
+          <img class="block h-auto w-[clamp(36px,5vw,72px)] shrink-0 object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.25)]" src="/img/badge.png" alt="Rock a pop, 100 % živě" width="132" height="132" decoding="async">
+        </a>
+        <nav class="flex flex-wrap items-center gap-x-3 gap-y-2 md:flex-nowrap md:gap-4">
+          <a class="font-barlow text-sm font-semibold tracking-[0.01em] text-brand-paper no-underline transition hover:text-brand-yellow md:text-base" href="/#koncerty">Koncerty</a>
+          <a class="font-barlow text-sm font-semibold tracking-[0.01em] text-brand-paper no-underline transition hover:text-brand-yellow md:text-base" href="/#playlist">Playlist</a>
+          <a class="font-barlow text-sm font-semibold tracking-[0.01em] text-brand-paper no-underline transition hover:text-brand-yellow md:text-base" href="/#kapela">Kapela</a>
+          <a class="font-barlow text-sm font-semibold tracking-[0.01em] text-brand-paper no-underline transition hover:text-brand-yellow md:text-base" href="/#kontakt">Kontakt</a>
+        </nav>
+      </div>
     </div>
   </header>
 
