@@ -1,0 +1,5 @@
+- Review all uncommitted changes
+- Summarize what was changed and why
+- Propose a concise commit message in English (conventional commits style)
+- Wait for approval before committing
+- Do not commit automatically without explicit confirmation
