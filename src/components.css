@@ -40,4 +40,102 @@
   .rich-text a {
     @apply text-white underline decoration-white/40 underline-offset-4 transition hover:text-brand-yellow hover:decoration-brand-yellow;
   }
+
+  .rich-text table {
+    @apply my-6 w-auto border-collapse overflow-hidden rounded-lg text-left text-white shadow-sm ring-1 ring-white/15;
+  }
+
+  .rich-text thead {
+    @apply bg-white/10 text-sm font-semibold uppercase tracking-[0.08em] text-brand-yellow;
+  }
+
+  .rich-text th,
+  .rich-text td {
+    @apply px-4 py-2 border-b border-white/10;
+  }
+
+  .rich-text tbody tr:last-child td {
+    @apply border-b-0;
+  }
+
+  .rich-text tbody tr:hover {
+    @apply bg-white/5;
+  }
+
+  .gallery-grid {
+    column-count: 2;
+    column-gap: 0.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .gallery-grid {
+      column-count: 3;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .gallery-grid {
+      column-count: 4;
+    }
+  }
+
+  .gallery-item {
+    @apply mb-3 block w-full cursor-zoom-in overflow-hidden rounded-lg border-0 bg-transparent p-0 ring-1 ring-white/15 transition;
+    break-inside: avoid;
+  }
+
+  .gallery-item:hover,
+  .gallery-item:focus-visible {
+    @apply ring-2 ring-brand-yellow outline-none;
+  }
+
+  .gallery-item img {
+    @apply block h-auto w-full object-cover transition duration-300;
+  }
+
+  .gallery-item:hover img,
+  .gallery-item:focus-visible img {
+    @apply scale-[1.02];
+  }
+
+  .gallery-lightbox {
+    @apply fixed inset-0 z-[100] flex items-center justify-center bg-black/85 px-4 py-6 backdrop-blur-sm;
+  }
+
+  .gallery-lightbox.hidden {
+    display: none;
+  }
+
+  .gallery-lightbox__stage {
+    @apply m-0 flex max-h-full max-w-[min(1280px,92vw)] flex-col items-center gap-3;
+  }
+
+  .gallery-lightbox__image {
+    @apply block max-h-[82vh] w-auto max-w-full rounded-lg object-contain shadow-[0_20px_60px_rgba(0,0,0,0.55)];
+  }
+
+  .gallery-lightbox__counter {
+    @apply font-barlow text-sm text-white/70;
+  }
+
+  .gallery-lightbox__close,
+  .gallery-lightbox__nav {
+    @apply absolute grid cursor-pointer place-items-center rounded-full border-0 bg-white/10 text-white transition hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-yellow;
+  }
+
+  .gallery-lightbox__close {
+    @apply right-4 top-4 h-10 w-10 text-2xl leading-none;
+  }
+
+  .gallery-lightbox__nav {
+    @apply top-1/2 h-12 w-12 -translate-y-1/2 text-3xl leading-none;
+  }
+
+  .gallery-lightbox__nav--prev {
+    @apply left-2 md:left-4;
+  }
+
+  .gallery-lightbox__nav--next {
+    @apply right-2 md:right-4;
+  }
 }

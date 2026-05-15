@@ -19,9 +19,10 @@
           <img class="block h-auto w-[clamp(36px,5vw,72px)] shrink-0 object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.25)]" src="/img/badge.png" alt="Rock a pop, 100 % živě" width="132" height="132" decoding="async">
         </a>
         <nav class="flex flex-wrap items-center gap-x-3 gap-y-2 md:flex-nowrap md:gap-4">
+          <a class="font-barlow text-sm font-semibold tracking-[0.01em] text-brand-paper no-underline transition hover:text-brand-yellow md:text-base" href="/#kapela">Kapela</a>
+          <a class="font-barlow text-sm font-semibold tracking-[0.01em] text-brand-paper no-underline transition hover:text-brand-yellow md:text-base" href="/#galerie">Galerie</a>
           <a class="font-barlow text-sm font-semibold tracking-[0.01em] text-brand-paper no-underline transition hover:text-brand-yellow md:text-base" href="/#koncerty">Koncerty</a>
           <a class="font-barlow text-sm font-semibold tracking-[0.01em] text-brand-paper no-underline transition hover:text-brand-yellow md:text-base" href="/#playlist">Playlist</a>
-          <a class="font-barlow text-sm font-semibold tracking-[0.01em] text-brand-paper no-underline transition hover:text-brand-yellow md:text-base" href="/#kapela">Kapela</a>
           <a class="font-barlow text-sm font-semibold tracking-[0.01em] text-brand-paper no-underline transition hover:text-brand-yellow md:text-base" href="/#kontakt">Kontakt</a>
         </nav>
       </div>
@@ -31,6 +32,25 @@
   <main class="page-shell pb-6 md:pb-8">
     {% block content %}{% endblock content %}
   </main>
+
+  <div
+    id="gallery-lightbox"
+    class="gallery-lightbox hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Náhled fotografie"
+    aria-hidden="true"
+  >
+    <button type="button" class="gallery-lightbox__close" data-gallery-close aria-label="Zavřít náhled">×</button>
+    <button type="button" class="gallery-lightbox__nav gallery-lightbox__nav--prev" data-gallery-prev aria-label="Předchozí fotografie">‹</button>
+    <figure class="gallery-lightbox__stage">
+      <img class="gallery-lightbox__image" alt="" decoding="async">
+      <figcaption class="gallery-lightbox__counter" data-gallery-counter aria-live="polite"></figcaption>
+    </figure>
+    <button type="button" class="gallery-lightbox__nav gallery-lightbox__nav--next" data-gallery-next aria-label="Další fotografie">›</button>
+  </div>
+
+  <script defer src="/js/gallery.js"></script>
 
   <script>
     document.addEventListener("click", function (event) {

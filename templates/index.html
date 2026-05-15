@@ -5,11 +5,12 @@
   {% set playlist = get_section(path="playlist/_index.md") %}
   {% set about = get_section(path="kapela/_index.md") %}
   {% set contact = get_section(path="kontakt/_index.md") %}
+  {% set gallery = get_section(path="galerie/_index.md") %}
 
   <section class="relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden">
-    <div class="relative max-h-[min(58vh,820px)] overflow-hidden leading-none">
+    <div class="relative h-[min(62vh,clamp(240px,48vw,620px))] overflow-hidden leading-none">
       {% if section.extra.hero.members and section.extra.hero.members | length > 0 %}
-        <div class="hero-band-grid max-[860px]:h-[clamp(220px,34vh,300px)]" data-count="{{ section.extra.hero.members | length }}">
+        <div class="hero-band-grid h-full" data-count="{{ section.extra.hero.members | length }}">
           {% for member in section.extra.hero.members %}
             <figure class="m-0 min-w-0 overflow-hidden">
               <img
@@ -25,7 +26,7 @@
         </div>
       {% else %}
         <img
-          class="block h-[min(58vh,820px)] w-full object-cover object-[center_12%] max-[860px]:h-[clamp(220px,34vh,300px)] max-[860px]:object-[center_14%]"
+          class="block h-full w-full object-cover object-[center_12%] max-[860px]:object-[center_14%]"
           src="{{ section.extra.hero.fallback_image | default(value='/ales-jana-michal.png') }}"
           alt="{{ section.extra.hero.fallback_alt | default(value='Kapela Blue Monkey') }}"
         >
@@ -35,7 +36,7 @@
 
 
   <section id="hero-texts" class="bg-transparent py-[clamp(0.75rem,2vw,2.5rem)] text-white">
-    <div class="relative z-10 -mt-[clamp(150px,22vw,250px)] mb-6 w-fit max-w-[calc(100%-clamp(64px,10vw,120px))] rounded-xl border border-white/25 bg-brand-indigo/45 px-5 py-4 shadow-[0_16px_36px_rgba(172,188,255,0.35)] shadow-brand-indigo/30 backdrop-blur-xl md:px-7 md:py-5 [text-shadow:0_1px_8px_rgba(0,0,0,0.35)]">
+    <div class="relative z-10 -mt-[clamp(72px,18vw,250px)] mb-6 w-fit max-w-[calc(100%-clamp(64px,10vw,120px))] rounded-xl border border-white/25 bg-brand-indigo/45 px-5 py-4 shadow-[0_16px_36px_rgba(172,188,255,0.35)] shadow-brand-indigo/30 backdrop-blur-xl md:px-7 md:py-5 [text-shadow:0_1px_8px_rgba(0,0,0,0.35)]">
       <p class="m-0 -translate-y-1 font-display text-[clamp(0.54rem,1.1vw,1.12rem)] leading-[1.08] font-normal uppercase tracking-[0.62px] text-white">{{ section.extra.hero.topline | default(value="Zábavy, plesy, svatby, narozeniny, večírky, párty") }}</p>
       <h1 class="mt-2 mb-0 font-display text-[clamp(1rem,4.4vw,3.25rem)] leading-[0.92] font-normal uppercase tracking-[0.78px] text-white">{{ section.extra.hero.headline | default(value="Hudební skupina") }}</h1>
       <p class="mt-1 mb-0 font-display text-[clamp(0.94rem,3.9vw,2.85rem)] leading-[0.92] font-normal uppercase tracking-[0.72px] text-brand-blue">{{ section.extra.hero.band | default(value="Blue Monkey") }}</p>
@@ -99,6 +100,33 @@
       {% endif %}
     </div>
   </section>
+
+  {% if gallery.pages | length > 0 %}
+    <section id="galerie" class="pt-4 pb-[clamp(1.5rem,3vw,2.5rem)] text-white">
+      <h2 class="mb-3 font-display text-[clamp(1.25rem,3vw,2rem)] leading-[1.05] uppercase tracking-[0.84px] text-white">{{ gallery.title | default(value="Galerie") }}</h2>
+      <div class="gallery-grid">
+        {% for page in gallery.pages %}
+          {% set image_path = page.relative_path | replace(from="index.md", to="photo.jpg") %}
+          {% set thumb = resize_image(path=image_path, width=720, op="fit_width", format="auto", quality=80) %}
+          {% set full = resize_image(path=image_path, width=1920, op="fit_width", format="auto", quality=82) %}
+          <button
+            type="button"
+            class="gallery-item"
+            data-gallery-index="{{ loop.index0 }}"
+            data-gallery-full="{{ full.url }}"
+            aria-label="Otevřít fotografii {{ loop.index }} z {{ gallery.pages | length }}"
+          >
+            <img
+              src="{{ thumb.url }}"
+              alt="{{ page.extra.alt | default(value='Fotografie kapely Blue Monkey') }}"
+              loading="lazy"
+              decoding="async"
+            >
+          </button>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
 
   <section id="koncerty" class="pt-4 pb-[clamp(1.5rem,3vw,2.5rem)] text-white">
     <h2 class="mb-3 font-display text-[clamp(1.25rem,3vw,2rem)] leading-[1.05] uppercase tracking-[0.84px] text-white">{{ concerts.title }}</h2>

@@ -28,13 +28,10 @@ alt = "Jana - Blue Monkey"
 src = "/img/hero-members/michal.png"
 alt = "Michal - Blue Monkey"
 
-[[extra.hero.members]]
-src = "/img/hero-members/vendula.png"
-alt = "Vendula - Blue Monkey"
 
-# [[extra.hero.members]]
-# src = "/img/hero-members/martin_bw_cropped.jpeg"
-# alt = "Martin - Blue Monkey"
+[[extra.hero.members]]
+src = "/img/hero-members/martin.jpeg"
+alt = "Martin - Blue Monkey"
 
 
 # [[extra.hero.members]]
