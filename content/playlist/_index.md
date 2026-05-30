@@ -3,7 +3,7 @@ title = "Playlist"
 template = "section.html"
 +++
 
-Ukázky a videa najdete postupně v této sekci.  
+Ukázky z koncertů najdete v sekci [Videa](/#videa).  
 <br>
 
 - **Černá růže**  

@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-  {% set concerts = get_section(path="koncerty/_index.md") %}
   {% set playlist = get_section(path="playlist/_index.md") %}
   {% set about = get_section(path="kapela/_index.md") %}
   {% set contact = get_section(path="kontakt/_index.md") %}
   {% set gallery = get_section(path="galerie/_index.md") %}
+  {% set videos = get_section(path="videa/_index.md") %}
 
   <section class="relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden">
     <div class="relative h-[min(62vh,clamp(240px,48vw,620px))] overflow-hidden leading-none">
@@ -101,6 +101,53 @@
     </div>
   </section>
 
+  {% if videos.pages | length > 0 %}
+    <section id="videa" class="pt-4 pb-[clamp(1.5rem,3vw,2.5rem)] text-white">
+      <h2 class="mb-3 font-display text-[clamp(1.25rem,3vw,2rem)] leading-[1.05] uppercase tracking-[0.84px] text-white">{{ videos.title | default(value="Videa") }}</h2>
+      {% if videos.content %}
+        <div class="rich-text mb-5">
+          {{ videos.content | safe }}
+        </div>
+      {% endif %}
+      <div class="video-grid">
+        {% for page in videos.pages %}
+          {% set youtube_id = page.extra.youtube_id | default(value="") %}
+          {% if youtube_id %}
+            <figure class="video-card">
+              <button
+                class="video-card__trigger"
+                type="button"
+                data-youtube-id="{{ youtube_id }}"
+                aria-label="Přehrát video {{ page.title }}"
+              >
+                <img
+                  class="video-card__thumb"
+                  src="https://i.ytimg.com/vi/{{ youtube_id }}/hqdefault.jpg"
+                  alt="{{ page.title }}"
+                  loading="lazy"
+                  decoding="async"
+                >
+                <span class="video-card__play" aria-hidden="true">▶</span>
+              </button>
+              <figcaption class="video-card__caption">{{ page.title }}</figcaption>
+            </figure>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  <section id="playlist" class="pt-4 pb-[clamp(1.5rem,3vw,2.5rem)] text-white">
+    <h2 class="mb-3 font-display text-[clamp(1.25rem,3vw,2rem)] leading-[1.05] uppercase tracking-[0.84px] text-white">{{ playlist.title }}</h2>
+    {% if playlist.content %}
+      <div class="[&_p]:max-w-[84ch] [&_p]:font-barlow [&_p]:text-[clamp(1rem,1.1vw,1.08rem)] [&_p]:leading-[1.58] [&_p]:text-white [&_p]:my-0 [&_p+p]:mt-4 [&_ul]:w-full [&_ul]:columns-2 [&_ul]:gap-8 [&_ul]:pl-5 md:[&_ul]:columns-3 lg:[&_ul]:columns-4 2xl:[&_ul]:columns-5 [&_li]:break-inside-avoid [&_li]:mb-2 [&_li]:border-b [&_li]:border-white/10 [&_li]:pb-2 [&_li]:font-barlow [&_li]:leading-[1.58] [&_li]:text-white [&_li_strong]:font-semibold">
+        {{ playlist.content | safe }}
+      </div>
+    {% else %}
+      <p class="font-barlow leading-[1.58] text-white">Playlist brzy doplníme.</p>
+    {% endif %}
+  </section>
+
   {% if gallery.pages | length > 0 %}
     <section id="galerie" class="pt-4 pb-[clamp(1.5rem,3vw,2.5rem)] text-white">
       <h2 class="mb-3 font-display text-[clamp(1.25rem,3vw,2rem)] leading-[1.05] uppercase tracking-[0.84px] text-white">{{ gallery.title | default(value="Galerie") }}</h2>
@@ -127,33 +174,6 @@
       </div>
     </section>
   {% endif %}
-
-  <section id="koncerty" class="pt-4 pb-[clamp(1.5rem,3vw,2.5rem)] text-white">
-    <h2 class="mb-3 font-display text-[clamp(1.25rem,3vw,2rem)] leading-[1.05] uppercase tracking-[0.84px] text-white">{{ concerts.title }}</h2>
-    {% if concerts.pages | length > 0 %}
-      <ul class="list-disc pl-5 text-white">
-        {% for page in concerts.pages %}
-          <li class="font-barlow leading-[1.58] text-white {% if not loop.last %}mb-2.5{% endif %}">
-            <strong>{{ page.date }}</strong> - {{ page.title }}
-            {% if page.content %}<div>{{ page.content | safe }}</div>{% endif %}
-          </li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <p class="font-barlow leading-[1.58] text-white">Termíny koncertů brzy doplníme.</p>
-    {% endif %}
-  </section>
-
-  <section id="playlist" class="pt-4 pb-[clamp(1.5rem,3vw,2.5rem)] text-white">
-    <h2 class="mb-3 font-display text-[clamp(1.25rem,3vw,2rem)] leading-[1.05] uppercase tracking-[0.84px] text-white">{{ playlist.title }}</h2>
-    {% if playlist.content %}
-      <div class="[&_p]:max-w-[84ch] [&_p]:font-barlow [&_p]:text-[clamp(1rem,1.1vw,1.08rem)] [&_p]:leading-[1.58] [&_p]:text-white [&_p]:my-0 [&_p+p]:mt-4 [&_ul]:w-full [&_ul]:columns-2 [&_ul]:gap-8 [&_ul]:pl-5 md:[&_ul]:columns-3 lg:[&_ul]:columns-4 2xl:[&_ul]:columns-5 [&_li]:break-inside-avoid [&_li]:mb-2 [&_li]:border-b [&_li]:border-white/10 [&_li]:pb-2 [&_li]:font-barlow [&_li]:leading-[1.58] [&_li]:text-white [&_li_strong]:font-semibold">
-        {{ playlist.content | safe }}
-      </div>
-    {% else %}
-      <p class="font-barlow leading-[1.58] text-white">Playlist brzy doplníme.</p>
-    {% endif %}
-  </section>
 
   <section id="kontakt" class="pt-4 pb-[clamp(1.5rem,3vw,2.5rem)] text-white">
     {% set contact_image = contact.extra.image | default(value="") %}

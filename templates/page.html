@@ -19,7 +19,7 @@
 
       {% if page.section %}
         {% set parent_section = get_section(path=page.section) %}
-        <p><a class="inline-flex items-center gap-2 font-barlow font-semibold text-brand-blue no-underline transition hover:text-brand-yellow hover:underline" href="{{ parent_section.permalink }}">Zpět na koncerty</a></p>
+        <p><a class="inline-flex items-center gap-2 font-barlow font-semibold text-brand-blue no-underline transition hover:text-brand-yellow hover:underline" href="{{ parent_section.permalink }}">Zpět na {{ parent_section.title }}</a></p>
       {% endif %}
     </article>
   </section>
