@@ -2,3 +2,4 @@ public/
 .DS_Store
 node_modules/
 static/processed_images/
+.env
