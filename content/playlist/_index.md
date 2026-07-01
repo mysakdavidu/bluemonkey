@@ -3,7 +3,7 @@ title = "Playlist"
 template = "section.html"
 +++
 
-Ukázky z koncertů najdete v sekci [Videa](/#videa).  
+Průřez naším repertoárem — od českých a slovenských klasik po zahraniční hity. Živé ukázky najdete v sekci [Videa](/#videa).  
 <br>
 
 - **Černá růže**  

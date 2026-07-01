@@ -69,7 +69,7 @@
     </div>
   </section>
 
-  <section id="kapela" class="py-[clamp(1.5rem,3vw,2.5rem)] text-white">
+  <section id="kapela" class="scroll-mt-24 py-[clamp(1.5rem,3vw,2.5rem)] text-white">
     {% set about_image = about.extra.image | default(value="") %}
     {% set about_image_alt = about.extra.image_alt | default(value=about.title) %}
     {% set about_image_align = about.extra.image_align | default(value="right") %}
@@ -102,7 +102,7 @@
   </section>
 
   {% if videos.pages | length > 0 %}
-    <section id="videa" class="pt-4 pb-[clamp(1.5rem,3vw,2.5rem)] text-white">
+    <section id="videa" class="scroll-mt-24 pt-4 pb-[clamp(1.5rem,3vw,2.5rem)] text-white">
       <h2 class="mb-3 font-display text-[clamp(1.25rem,3vw,2rem)] leading-[1.05] uppercase tracking-[0.84px] text-white">{{ videos.title | default(value="Videa") }}</h2>
       {% if videos.content %}
         <div class="rich-text mb-5">
@@ -137,7 +137,7 @@
     </section>
   {% endif %}
 
-  <section id="playlist" class="pt-4 pb-[clamp(1.5rem,3vw,2.5rem)] text-white">
+  <section id="playlist" class="scroll-mt-24 pt-4 pb-[clamp(1.5rem,3vw,2.5rem)] text-white">
     <h2 class="mb-3 font-display text-[clamp(1.25rem,3vw,2rem)] leading-[1.05] uppercase tracking-[0.84px] text-white">{{ playlist.title }}</h2>
     {% if playlist.content %}
       <div class="[&_p]:max-w-[84ch] [&_p]:font-barlow [&_p]:text-[clamp(1rem,1.1vw,1.08rem)] [&_p]:leading-[1.58] [&_p]:text-white [&_p]:my-0 [&_p+p]:mt-4 [&_ul]:w-full [&_ul]:columns-2 [&_ul]:gap-8 [&_ul]:pl-5 md:[&_ul]:columns-3 lg:[&_ul]:columns-4 2xl:[&_ul]:columns-5 [&_li]:break-inside-avoid [&_li]:mb-2 [&_li]:border-b [&_li]:border-white/10 [&_li]:pb-2 [&_li]:font-barlow [&_li]:leading-[1.58] [&_li]:text-white [&_li_strong]:font-semibold">
@@ -149,7 +149,7 @@
   </section>
 
   {% if gallery.pages | length > 0 %}
-    <section id="galerie" class="pt-4 pb-[clamp(1.5rem,3vw,2.5rem)] text-white">
+    <section id="galerie" class="scroll-mt-24 pt-4 pb-[clamp(1.5rem,3vw,2.5rem)] text-white">
       <h2 class="mb-3 font-display text-[clamp(1.25rem,3vw,2rem)] leading-[1.05] uppercase tracking-[0.84px] text-white">{{ gallery.title | default(value="Galerie") }}</h2>
       <div class="gallery-grid">
         {% for page in gallery.pages %}
@@ -175,7 +175,7 @@
     </section>
   {% endif %}
 
-  <section id="kontakt" class="pt-4 pb-[clamp(1.5rem,3vw,2.5rem)] text-white">
+  <section id="kontakt" class="scroll-mt-24 pt-4 pb-[clamp(1.5rem,3vw,2.5rem)] text-white">
     {% set contact_image = contact.extra.image | default(value="") %}
     {% set contact_image_alt = contact.extra.image_alt | default(value=contact.title) %}
     {% set contact_image_align = contact.extra.image_align | default(value="right") %}
