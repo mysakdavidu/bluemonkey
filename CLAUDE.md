@@ -51,7 +51,7 @@ zola build          # vygeneruje public/ (gitignorováno)
 
 Homepage `templates/index.html` je jádro webu. Nezobrazuje jen sekci `content/_index.md`,
 ale přes `get_section(...)` **do jedné stránky sesbírá všechny ostatní sekce**
-(`kapela`, `videa`, `playlist`, `galerie`, `kontakt`) a vykreslí je jako kotvené bloky
+(`kapela`, `videa`, `playlist`, `galerie`, `stageplan`, `kontakt`) a vykreslí je jako kotvené bloky
 (`<section id="kapela">` atd.). Navigace v `base.html` odkazuje kotvami (`/#kapela`).
 
 Kvůli tomu:
@@ -71,6 +71,13 @@ Zola sekce s TOML front matter (`+++`). Konfigurace webu žije v datech, ne v š
   (řazení). Náhledy se tahají z `i.ytimg.com`, klik přehraje video (viz níže).
 - **`content/galerie/foto-NN/`** — každá fotka má vlastní adresář s **`photo.jpg`** vedle
   `index.md`. Homepage generuje náhledy přes Zola `resize_image` (thumb 720 px, full 1920 px).
+- **`content/stageplan/`** — sekce má jen `_index.md` (`render = false`, `transparent = true`,
+  bez `pages`); homepage vykreslí nadpis + úvodní text a **vloží inline SVG** z
+  `templates/partials/stageplan-svg.html`. To SVG je celé schéma (stage plan): perspektivní
+  pódium s portréty muzikantů ze `static/img/hero-members/` v kruhovém ořezu a routing signálu
+  (XLR splitter → FOH, Soundcraft monitor mix, AUX 1–6). Je stylované brand tokeny a fonty
+  (Bowlby One SC / Barlow) přímo v `<style>` uvnitř SVG a rámuje ho `.stageplan-frame`
+  (`components.css`). Žádný samostatný obrázek — vše je vektor.
 
 ### YouTube přehrávání
 
