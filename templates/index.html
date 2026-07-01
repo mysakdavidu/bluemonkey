@@ -6,6 +6,7 @@
   {% set contact = get_section(path="kontakt/_index.md") %}
   {% set gallery = get_section(path="galerie/_index.md") %}
   {% set videos = get_section(path="videa/_index.md") %}
+  {% set stageplan = get_section(path="stageplan/_index.md") %}
 
   <section class="relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden">
     <div class="relative h-[min(62vh,clamp(240px,48vw,620px))] overflow-hidden leading-none">
@@ -174,6 +175,18 @@
       </div>
     </section>
   {% endif %}
+
+  <section id="stageplan" class="scroll-mt-24 pt-4 pb-[clamp(1.5rem,3vw,2.5rem)] text-white">
+    <h2 class="mb-3 font-display text-[clamp(1.25rem,3vw,2rem)] leading-[1.05] uppercase tracking-[0.84px] text-white">{{ stageplan.title | default(value="Stage plan") }}</h2>
+    {% if stageplan.content %}
+      <div class="rich-text mb-5 max-w-[84ch]">
+        {{ stageplan.content | safe }}
+      </div>
+    {% endif %}
+    <div class="stageplan-frame">
+      {% include "partials/stageplan-svg.html" %}
+    </div>
+  </section>
 
   <section id="kontakt" class="scroll-mt-24 pt-4 pb-[clamp(1.5rem,3vw,2.5rem)] text-white">
     {% set contact_image = contact.extra.image | default(value="") %}

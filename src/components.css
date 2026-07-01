@@ -167,4 +167,12 @@
   .video-card__caption {
     @apply mt-2 font-barlow text-sm leading-[1.4] text-white/85;
   }
+
+  .stageplan-frame {
+    @apply overflow-hidden rounded-xl bg-brand-night/40 ring-1 ring-white/15 shadow-[0_14px_32px_rgba(7,10,24,0.42)];
+  }
+
+  .stageplan-svg {
+    @apply block h-auto w-full;
+  }
 }
