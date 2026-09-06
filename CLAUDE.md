@@ -79,6 +79,14 @@ Zola sekce s TOML front matter (`+++`). Konfigurace webu žije v datech, ne v š
   (Bowlby One SC / Barlow) přímo v `<style>` uvnitř SVG a rámuje ho `.stageplan-frame`
   (`components.css`). Žádný samostatný obrázek — vše je vektor.
 
+- **`content/oauth/`** — samostatné (nekotvené) stránky mimo homepage, aktuálně pro
+  Google OAuth aplikaci **Claude Gmail Personal**: `oauth/claude-gmail/_index.md`
+  (popis nástroje, kontakt) a `oauth/claude-gmail/privacy/_index.md` (zásady soukromí).
+  Nadřazená sekce `oauth/_index.md` má `render = false`, takže `/oauth/` samo neexistuje;
+  podsekce se vykreslují přes `templates/section.html` (URL `/oauth/claude-gmail/`
+  a `/oauth/claude-gmail/privacy/`). Do navigace v `base.html` se nepřidávají.
+  Tyto URL jsou zapsané v Google Auth Platform (homepage + privacy policy) — nepřejmenovávat.
+
 ### YouTube přehrávání
 
 Náhledy jsou `<button data-youtube-id="...">`. Globální click-handler v `base.html`
